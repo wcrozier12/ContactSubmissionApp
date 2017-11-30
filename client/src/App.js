@@ -163,6 +163,9 @@ class App extends Component {
         return {...input, value: ''}
       })
       console.log(response);
+      if (response.data === 'There was an error, please ensure all fields are filled out correctly') {
+        return this.setState({messageScreen:true, message: response.data})      
+      }
       this.setState({inputs, messageScreen:true, message: response.data})
     })
   }
