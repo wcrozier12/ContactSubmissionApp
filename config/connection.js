@@ -1,12 +1,23 @@
 const { Pool, Client } = require('pg');
-const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'SibiDB',
-  password: 'Horizon12?',
-  port: 5432,
-})
+const DATABASEURI = process.env.DATABASE_URL;
 
+
+  const herokuClient = new Client(DATABASEURI);
+
+  const localClient = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'SibiDB',
+    password: '',
+    port: 5432,
+  })
+
+if (process.env.DATABASE_URL) {
+  let client = herokuClient
+}
+else {
+  client = localClient
+}
 client.connect((err) => {
   if (err) {
     console.error('connection error', err.stack)
