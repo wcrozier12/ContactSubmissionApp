@@ -7,7 +7,7 @@ const pg = require('pg');
 router.post('/api/newContact', ((req, res) => {
   const values = req.body.join();
   console.log(values);
-  const query = 'INSERT INTO' + '"' +'ContactInfo'+'"'+ '.' + '"' + 'Contacts' + '"' + '(title, firstname, mi, lastName, gender, address, city, state, zipcode, countryabv, email, phone, dob, age, occupation, company, domain) VALUES(' + values + ')';
+  const query = 'INSERT INTO' + '"' +'public'+'"'+ '.' + '"' + 'Contacts' + '"' + '(title, firstname, mi, lastName, gender, address, city, state, zipcode, countryabv, email, phone, dob, age, occupation, company, domain) VALUES(' + values + ')';
 
   client.query(query, (err, response) => {
     if(err)  {
