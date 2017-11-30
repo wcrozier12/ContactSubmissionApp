@@ -162,6 +162,7 @@ class App extends Component {
       const inputs = this.state.inputs.map((input) => {
         return {...input, value: ''}
       })
+      console.log(response);
       this.setState({inputs, messageScreen:true, message: response.data})
     })
   }
